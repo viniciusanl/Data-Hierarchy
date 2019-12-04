@@ -1,0 +1,48 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-4">
+        <button type="button" class="btn btn-danger" (click)="removeElement()">
+          <i class="fas fa-less-than"></i>
+        </button>
+
+        <button type="button" class="btn btn-success" (click)="addElement()">
+          <i class="fas fa-greater-than"></i>
+        </button>
+      </div>
+
+      <div class="col-4">
+        <button type="button" class="btn btn-light" (click)="remElementF()">
+          <i class="fas fa-angle-double-left"></i>
+        </button>
+        <button type="button" class="btn btn-dark" (click)="addElementF()">
+          <i class="fas fa-angle-double-right"></i>
+        </button>
+      </div>
+      <div class="col-2" [hidden]="habilitado">
+        <input
+          type="text"
+          class="form-control"
+          id="position"
+          placeholder="Posição"
+        />
+      </div>
+    </div>
+  </div>
+
+  <br />
+
+  <ul>
+    <li *ngFor="let folder of this.allfolder; let i = index">
+      <i class="{{ this.allfolder[i].icon }}"></i> -
+      {{ this.allfolder[i].name }}
+      <div *ngIf="this.allfolder[i].filho[i] !== []">
+        <li *ngFor="let allfolder of this.allfolder[i].filho[i]">
+          <i class="{{ this.allfolder[i].filho[i].icon }}"></i> -
+          {{ this.allfolder[i].filho[i].name }}
+        </li>
+      </div>
+    </li>
+  </ul>
+</div>
