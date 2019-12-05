@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron" align="center">
   <div class="container">
     <div class="row">
       <div class="col-2"></div>
@@ -33,7 +33,24 @@
 
   <br />
 
-  <ul>
+  <div class="form-check" *ngFor="let folder of this.allfolder; let i = index">
+    <input type="checkbox" class="form-check-input" id="i" (click)='Check(i)'/>
+    <i class="{{ this.allfolder[i].icon }}"></i> -
+    {{ this.allfolder[i].name }}
+    <div *ngIf="this.allfolder[i].filho[i] !== []">
+      <div
+        class="form-check"
+        *ngFor="let allfolder of this.allfolder[i].filho[i]"
+      >
+        <input type="checkbox" class="form-check-input" id="check" />
+        <label class="form-check-label" for="check"></label>
+        <i class="{{ this.allfolder[i].filho[i].icon }}"></i> -
+        {{ this.allfolder[i].filho[i].name }}
+      </div>
+    </div>
+  </div>
+
+  <!-- <ul>
     <li *ngFor="let folder of this.allfolder; let i = index">
       <i class="{{ this.allfolder[i].icon }}"></i> -
       {{ this.allfolder[i].name }}
@@ -44,5 +61,5 @@
         </li>
       </div>
     </li>
-  </ul>
+  </ul> -->
 </div>
